@@ -1,0 +1,69 @@
+/*
+Bike Sales Analysis
+
+FIRSTLY DATASET WAS CLEANED AND PROCESSED IN MS EXCEL. DATASET WAS LOADED IN AWS S3 BUCKET. THEN ALL THE QUERIES WERE RAN IN ATHENA SQL.
+*/
+
+1.Total Customers & Buyers
+
+SELECT 
+  COUNT(*) AS total_customers,
+  COUNT_IF("Purchased Bike" = 'Yes') AS total_bike_buyers
+FROM bike_sales.bike_sales_data;
+
+2.Bike Purchase by Gender
+
+SELECT 
+  Gender,
+  COUNT(*) AS total_customers,
+  COUNT_IF("Purchased Bike" = 'Yes') AS bike_buyers
+FROM bike_sales.bike_sales_data
+GROUP BY Gender;
+
+3.Bike Purchase by Marital Status
+
+SELECT 
+  "Marital Status",
+  COUNT(*) AS total_customers,
+  COUNT_IF("Purchased Bike" = 'Yes') AS bike_buyers
+FROM bike_sales.bike_sales_data
+GROUP BY "Marital Status";
+
+4.Education vs Bike Purchase
+
+SELECT 
+  Education,
+  COUNT(*) AS total_customers,
+  COUNT_IF("Purchased Bike" = 'Yes') AS bike_buyers
+FROM bike_sales.bike_sales_data
+GROUP BY Education
+ORDER BY bike_buyers DESC;
+
+5.Occupation vs Bike Purchase
+
+SELECT 
+  Occupation,
+  COUNT(*) AS total_customers,
+  COUNT_IF("Purchased Bike" = 'Yes') AS bike_buyers
+FROM bike_sales.bike_sales_data
+GROUP BY Occupation
+ORDER BY bike_buyers DESC;
+
+7.Commute Distance vs Bike Purchase
+
+SELECT 
+  "Commute Distance",
+  COUNT_IF("Purchased Bike" = 'Yes') AS bike_buyers
+FROM bike_sales.bike_sales_data
+GROUP BY "Commute Distance"
+ORDER BY bike_buyers DESC;
+
+8.Region-wise Bike Buyers
+
+SELECT 
+  Region,
+  COUNT_IF("Purchased Bike" = 'Yes') AS bike_buyers
+FROM bike_sales.bike_sales_data
+GROUP BY Region
+ORDER BY bike_buyers DESC;
+
