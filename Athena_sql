@@ -4,12 +4,13 @@ Bike Sales Analysis
 FIRSTLY DATASET WAS CLEANED AND PROCESSED IN MS EXCEL. DATASET WAS LOADED IN AWS S3 BUCKET. THEN ALL THE QUERIES WERE RAN IN ATHENA SQL.
 */
 
-1.Total Customers & Buyers
-
+**1.Total Customers & Buyers
+```sql
 SELECT 
   COUNT(*) AS total_customers,
   COUNT_IF("Purchased Bike" = 'Yes') AS total_bike_buyers
 FROM bike_sales.bike_sales_data;
+```**
 
 2.Bike Purchase by Gender
 
